@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oráculo Definitivo - Tómbola Glamur Premium</title>
+    
+    <!-- ÍCONO MÍSTICO DEL ORÁCULO DE LA FORTUNA (77) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3CradialGradient id='g1' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23ffeaa7'/%3E%3Cstop offset='70%25' stop-color='%23fd79a8'/%3E%3Cstop offset='100%25' stop-color='%23000'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='45' r='35' fill='url(%23g1)' stroke='%23ffeaa7' stroke-width='2' filter='drop-shadow(0 0 8px %23fd79a8)'/%3E%3Cpath d='M25 80 L75 80 L65 70 L35 70 Z' fill='%236c5ce7' stroke='%23ffeaa7' stroke-width='1.5'/%3E%3Ctext x='50' y='56' font-family='monospace' font-size='32' font-weight='900' fill='%2300ffcc' text-anchor='middle' style='filter: drop-shadow(0 0 5px %2300ffcc);'%3E77%3C/text%3E%3Ccircle cx='25' cy='25' r='2' fill='%23fff'/%3E%3Ccircle cx='75' cy='25' r='3' fill='%23ffeaa7'/%3E%3Ccircle cx='70' cy='60' r='1.5' fill='%23fff'/%3E%3C/svg%3E">
+
+    <style>
+        /* FONDO CÓSMICO CON ANIMACIÓN */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #1b1464 0%, #0c0822 70%, #05020c 100%);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        /* EFECTO ESTRELLAS EN LOS COSTADOS */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 40px 60px;
+            animation: estrellasParpadeo 4s linear infinite;
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes estrellasParpadeo {
+            0% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.4; }
+        }
+
+        /* RELOJ NEÓN MEJORADO */
+        .live-clock {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 2px solid #00ffcc;
+            color: #00ffcc;
+            box-shadow: 0 0 15px #00ffcc;
+            z-index: 10;
+        }
+
+        /* DISTRIBUCIÓN EN TRES COLUMNAS */
+        .app-layout {
+            display: flex;
+            gap: 25px;
+            max-width: 1100px;
+            width: 100%;
+            z-index: 1;
+            margin-top: 20px;
+        }
+
+        /* COLUMNAS LATERALES DE GLAMUR */
+        .lateral-card {
+            flex: 1;
+            background: rgba(15, 12, 41, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(162, 155, 254, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            height: fit-content;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .lateral-card h3 {
+            color: #ffeaa7;
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 2px solid rgba(253, 121, 168, 0.3);
+            padding-bottom: 8px;
+            text-shadow: 0 0 5px rgba(255, 234, 167, 0.4);
+        }
+
+        /* CONTENEDOR PRINCIPAL GLAMOROSO */
+        .container {
+            flex: 1.8;
+            background: rgba(20, 15, 45, 0.75);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 0 35px rgba(253, 121, 168, 0.25), inset 0 0 20px rgba(255,255,255,0.05);
+            border: 2px solid #fd79a8;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            background: linear-gradient(45deg, #ffeaa7, #fd79a8, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.4rem;
+            margin: 0 0 5px 0;
+            font-weight: 900;
+            filter: drop-shadow(0px 0px 8px rgba(253,121,168,0.5));
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #dfe6e9;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        /* BOTONES DE SELECCIÓN CON REFLEJOS */
+        .mode-selector {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+        .mode-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .mode-btn.active {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            border-color: #ffeaa7;
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* MEGA BOTÓN DE INVOCACIÓN CON MOVIMIENTO */
+        .invoke-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: linear-gradient(-45deg, #fd79a8, #e17055, #6c5ce7, #00ffcc);
+            background-size: 300% 300%;
+            animation: gradienteVivo 4s ease infinite;
+            border: 2px solid #ffeaa7;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(253, 121, 168, 0.5);
+            transition: all 0.2s ease;
+        }
+        .invoke-btn:hover:not(:disabled) {
+            transform: scale(1.03) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 204, 0.6);
+        }
+
+        @keyframes gradienteVivo {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ÁREA DEL RESULTADO NEÓN SÚPER RESALTADA */
+        .result-area {
+            min-height: 90px;
+            margin: 25px 0 15px 0;
+            background: radial-gradient(circle, #110d29 0%, #000000 100%);
+            border: 3px solid #ffeaa7;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-family: monospace;
+            font-weight: 900;
+            color: #ffeaa7;
+            box-shadow: 0 0 25px rgba(255, 234, 167, 0.4), inset 0 0 15px rgba(255,255,255,0.1);
+        }
+
+        /* RECUADRO DE BIENVENIDA VISUAL (Aviso de audio) */
+        .welcome-notice {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(253, 121, 168, 0.2));
+            border: 1px solid #ffeaa7;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #ffeaa7;
+            animation: pulsoSuave 2s infinite alternate;
+        }
+
+        @keyframes pulsoSuave {
+            0% { transform: scale(0.99); opacity: 0.8; }
+            100% { transform: scale(1.01); opacity: 1; }
+        }
+
+        /* COMPARTIR Y DESCARGAR */
+        .share-area {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+        .share-area.visible { opacity: 1; transform: translateY(0); }
+        .btn-social {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            border: 2px solid #fd79a8; color: #fff; padding: 10px 20px;
+            border-radius: 30px; font-weight: bold; font-size: 0.85rem; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(253,121,168,0.2); transition: all 0.2s;
+        }
+        .btn-social:hover { background: #fd79a8; box-shadow: 0 0 15px #fd79a8; transform: translateY(-2px); }
+
+        .banner-publicidad {
+            margin: 20px 0; background: rgba(0,0,0,0.6); padding: 15px;
+            border-radius: 12px; border: 2px dashed #6c5ce7; color: #a29bfe;
+        }
+
+        @media (max-width: 850px) {
+            .app-layout { flex-direction: column; }
+            .live-clock { position: static; margin-bottom: 15px; display: inline-block; }
+            body { flex-direction: column; align-items: center; }
+        }
+
+        .history-section { margin-top: 20px; text-align: left; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;}
+        .history-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .actions { display: flex; gap: 10px; margin-bottom: 15px; }
+        .action-btn { flex: 1; padding: 10px; border: 1px solid #a29bfe; background: transparent; color: white; border-radius: 8px; cursor: pointer; }
+        .heat-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-top: 10px; }
+        .heat-cell { aspect-ratio: 1; background: rgba(255,255,255,0.05); font-size: 0.7rem; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+        .disclaimer { font-size: 0.75rem; color: #b2bec3; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; margin-top: 15px; }
+        input[type="number"] { width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #a29bfe; background: #000; color: #fff; font-size: 1.1rem; box-sizing: border-box; }
+        .ad-container { display: none; background: rgba(0, 0, 0, 0.95); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body>
+
+<div class="live-clock" id="reloj">00:00:00</div>
+
+<div class="app-layout">
+    
+    <!-- COSTADO IZQUIERDO -->
+    <div class="lateral-card">
+        <h3>🌙 Clima Astral Tómbola</h3>
+        <p style="font-size: 0.85rem; color: #b2bec3; line-height: 1.5;">
+            La Luna rige la intuición numérica. Hoy la energía cósmica favorece a los números terminados en líneas pares.
+        </p>
+        <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; font-size: 0.8rem; color: #00ffcc; text-align: center; border: 1px solid rgba(0,255,204,0.2);">
+            🔮 Vibración de Hoy: Alta
+        </div>
+    </div>
+
+    <!-- CENTRO -->
+    <div class="container">
+        <h1>✨ ORÁCULO DEFINITIVO ✨</h1>
+        <div class="subtitle">Suerte • Tómbola • Alta Magia Estadística</div>
+
+        <!-- CARTELERA DE BIENVENIDA EMOCIONANTE -->
+        <div id="cartelBienvenida" class="welcome-notice" style="display:none;">
+            🔮 ¡Bienvenido al Oráculo VIP! Hacé cualquier clic en la pantalla para activar el sistema de voz místico.
+        </div>
+
+        <div style="font-size:0.9rem; margin-bottom:18px; color:#00ffcc;" id="txtEnergia">⚡ Cargas Disponibles: 3/3</div>
+
+        <div class="input-group">
+            <label style="color: #ffeaa7;" for="intuicion">🔮 Poné tu Vibración Numérica (Opcional, 0-99):</label>
+            <input type="number" id="intuicion" min="0" max="99" placeholder="Ej: 77">
+        </div>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="setMode('matutino', event)">🌅 Matutino</button>
+            <button class="mode-btn" onclick="setMode('vespertino', event)">🌇 Vespertino</button>
+            <button class="mode-btn" onclick="setMode('nocturno', event)">🌜 Nocturno</button>
+        </div>
+
+        <button class="invoke-btn" id="btnInvocar" onclick="controladorInvocacion()">✨ INVOCAR NÚMERO DE LA SUERTE ✨</button>
+
+        <div class="actions">
+            <button class="action-btn" onclick="verMapaCalor()">📊 Mapa Estadístico</button>
+            <button class="action-btn" onclick="borrarHistorial()">🗑️ Limpiar Todo</button>
+        </div>
+
+        <div id="resultado" class="result-area">?</div>
+
+        <div id="shareArea" class="share-area">
+            <button class="btn-social" onclick="compartirTexto()">✨ Compartir Suerte</button>
+            <button class="btn-social" onclick="descargarImagenAndroid()">📥 Descargar Foto Premium</button>
+        </div>
+
+        <div class="banner-publicidad">
+            <div>🔥 Anuncio Patrocinado • <span style="color:#fff; font-weight:bold;">Espacio de Monetización</span></div>
+        </div>
+
+        <div id="heatSection" class="heat-section">
+            <strong style="color: #00ffcc;">📊 Distribución del Historial (00-99)</strong>
+            <div id="heatGrid" class="heat-grid"></div>
+        </div>
+
+        <div class="history-section">
+            <strong>📜 Tus Números Revelados</strong>
+            <div id="historialList">
+                <div style="text-align:center; color:#aaa; padding:10px;">El oráculo espera tu llamado...</div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ Entretenimiento y simulación matemática para tómbola. Juega con conciencia.
+        </div>
+    </div>
+
+    <!-- COSTADO DERECHO -->
+    <div class="lateral-card">
+        <h3>🔥 Tendencias Calientes</h3>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+            <div style="display:flex; justify-content:space-between; background:rgba(255,255,255,0.05); padding:6px 10px; border-radius:6px;">
+                <span>🍀 Más Buscado Semanal:</span><strong style="color:#fd79a8">33</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; background:rgba(255,255,255,0.05); padding:6px 10px; border-radius:6px;">
+                <span>🔮 El Número de la Luna:</span><strong style="color:#ffeaa7">07</strong>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- PUBLICIDAD DE VIDEO -->
+<div id="videoAdContainer" class="ad-container">
+    <div style="background: #110d29; padding: 30px; border-radius: 20px; border: 3px solid #00ffcc; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 0 30px #00ffcc;">
+        <h3 style="color:#fff; margin:0; font-size:1.3rem;">📺 Recargando Energía Astral</h3>
+        <p style="color:#aaa; font-size:0.85rem; margin:10px 0;">Disfrutá este video patrocinado para desbloquear 3 tiradas más del oráculo millonario.</p>
+        <div style="background:#000; width:100%; height:160px; display:flex; align-items:center; justify-content:center; color:#fd79a8; border: 1px dashed #fd79a8; border-radius:8px; font-weight:bold;">
+            🎬 AUDIOVISUAL AD
+        </div>
+        <div style="font-size: 3rem; color: #ffeaa7; margin: 15px 0; font-weight: bold;" id="adCountdown">5</div>
+        <p style="color:#00ffcc; font-size:0.85rem; font-weight:bold; margin:0;">Ganando: +3 Invocaciones Sin Costo</p>
+    </div>
+</div>
+
+<script>
+    let modoActual = 'matutino';
+    let historial = JSON.parse(localStorage.getItem('oraculoHistorial')) || [];
+    let audioCtx = null; 
+    let ultimoNumeroGanador = null;
+    let intentosDisponibles = parseInt(localStorage.getItem('oraculoIntentos')) || 3;
+
+    function actualizarReloj() {
+        const ahora = new Date();
+        document.getElementById('reloj').innerText = `${ahora.getHours().toString().padStart(2, '0')}:${ahora.getMinutes().toString().padStart(2, '0')}:${ahora.getSeconds().toString().padStart(2, '0')}`;
+    }
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj();
+
+    // LÓGICA DE PRESENTACIÓN POR VOZ (GLAMUR ASTRAL)
+    function ejecutarPresentacionVoz() {
+        if (!('speechSynthesis' in window)) return;
+
+        const yaSeAgregoUsuario = localStorage.getItem('oraculoRegistrado');
+        window.speechSynthesis.cancel(); // Limpia audios anteriores
+
+        let mensaje = "";
+        if (!yaSeAgregoUsuario) {
+            mensaje = "¡Hola! Bienvenido al Oráculo Definitivo. Gracias por registrarte en nuestra comunidad astral. Esta aplicación combina la energía de la luna, el análisis de tiempos y la estadística mística para revelar tus números de la tómbola con el mayor glamur. Tenés tres intentos gratuitos diarios. ¡Que la fortuna esté de tu lado!";
+            localStorage.setItem('oraculoRegistrado', 'true');
+            document.getElementById('cartelBienvenida').style.display = 'block';
+            setTimeout(() => { document.getElementById('cartelBienvenida').style.display = 'none'; }, 10000);
+        } else {
+            mensaje = "Hola de nuevo, jugador VIP. El Oráculo está listo y cargado de glamour para revelar tu suerte de hoy.";
+        }
+
+        const msg = new SpeechSynthesisUtterance(mensaje);
+        msg.lang = 'es-LA';
+        msg.rate = 0.95; 
+        window.speechSynthesis.speak(msg);
+    }
+
+    window.addEventListener('click', function iniciarAudioAlPrimerClic() {
+        ejecutarPresentacionVoz();
+        window.removeEventListener('click', iniciarAudioAlPrimerClic);
+    });
+
+    function actualizarInterfazEnergia() {
+        const txt = document.getElementById('txtEnergia');
+        const btn = document.getElementById('btnInvocar');
+        if(intentosDisponibles > 0) {
+            txt.innerText = `⚡ Cargas Disponibles: ${intentosDisponibles}/3`;
+            txt.style.color = "#00ffcc";
+            btn.innerText = "✨ INVOCAR NÚMERO DE LA SUERTE ✨";
+        } else {
+            txt.innerText = `❌ Sin energía astral disponible`;
+            txt.style.color = "#ff7675";
+            btn.innerText = "📺 Ver Video para Desbloquear +3 Giros";
+        }
+    }
+
+    function setMode(modo, e) {
+        modoActual = modo;
+        document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+    }
+
+    function playTickSound() {
+        try {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            let osc = audioCtx.createOscillator();
+            let gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.04);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.04);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.04);
+        } catch(e) {}
+    }
+
+    function controladorInvocacion() {
+        if (intentosDisponibles > 0) {
+            intentosDisponibles--;
+            localStorage.setItem('oraculoIntentos', intentosDisponibles);
+            actualizarInterfazEnergia();
+            ejecutarGiroOraculo();
+        } else {
+            lanzarVideoPromocional();
+        }
+    }
+
+    function lanzarVideoPromocional() {
+        const adContainer = document.getElementById('videoAdContainer');
+        const countdownLabel = document.getElementById('adCountdown');
+        adContainer.style.display = 'flex';
+        
+        let tiempoAnuncio = 5; 
+        countdownLabel.innerText = tiempoAnuncio;
+
+        let cuentaRegresiva = setInterval(() => {
+            tiempoAnuncio--;
+            countdownLabel.innerText = tiempoAnuncio;
+            if(tiempoAnuncio <= 0) {
+                clearInterval(cuentaRegresiva);
+                adContainer.style.display = 'none';
+                intentosDisponibles = 3;
+                localStorage.setItem('oraculoIntentos', intentosDisponibles);
+                actualizarInterfazEnergia();
+            }
+        }, 1000);
+    }
+
+    function ejecutarGiroOraculo() {
+        const intuicionInput = document.getElementById('intuicion').value;
+        const intuicion = intuicionInput !== '' ? parseInt(intuicionInput) : null;
+        const btn = document.getElementById('btnInvocar');
+        const resultadoDiv = document.getElementById('resultado');
+        const shareArea = document.getElementById('shareArea');
+        
+        if (intuicion !== null && (intuicion < 0 || intuicion > 99)) {
+            alert("Introduce un número válido entre 00 y 99.");
+            return;
+        }
+
+        btn.disabled = true;
+        shareArea.classList.remove('visible');
+
+        let numero = Math.floor(Math.random() * 100);
+        const fecha = new Date();
+        const factorLuna = (fecha.getDate() + fecha.getMonth()) % 10;
+        
+        let factorHora = 0;
+        if (modoActual === 'matutino') factorHora = 5;
+        if (modoActual === 'vespertino') factorHora = 12;
+        if (modoActual === 'nocturno') factorHora = 22;
+
+        if (intuicion !== null) {
+            numero = (numero + intuicion + factorLuna + factorHora) % 100;
+        } else {
+            numero = (numero + factorLuna + factorHora) % 100;
+        }
+        const numeroFormateado = numero.toString().padStart(2, '0');
+        ultimoNumeroGanador = numeroFormateado;
+
+        let duracion = 1200; 
+        let intervaloTiempo = 45; 
+        let tiempoPasado = 0;
+
+        let iteracionRuleta = setInterval(() => {
+            let numAzar = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+            resultadoDiv.innerText = numAzar;
+            
+            playTickSound();
+            if ('vibrate' in navigator) navigator.vibrate(10);
+
+            tiempoPasado += intervaloTiempo;
+            if (tiempoPasado >= duracion) {
+                clearInterval(iteracionRuleta);
+                resultadoDiv.innerText = numeroFormateado;
+                btn.disabled = false;
+                shareArea.classList.add('visible');
+
+                if ('vibrate' in navigator) navigator.vibrate([150, 60, 150]);
+
+                agregarAlHistorial(numeroFormateado, modoActual);
+                speak(numeroFormateado);
+            }
+        }, intervaloTiempo);
+    }
+
+    function agregarAlHistorial(numero, modo) {
+        const ahora = new Date();
+        const entrada = { numero: numero, modo: modo.charAt(0).toUpperCase() + modo.slice(1), fecha: ahora.toLocaleTimeString() };
+        historial.unshift(entrada);
+        if (historial.length > 10) historial.pop();
+        localStorage.setItem('oraculoHistorial', JSON.stringify(historial));
+        renderizarHistorial();
+        if (document.getElementById('heatSection').style.display === 'block') actualizarMapaCalor();
+    }
+
+    function renderizarHistorial() {
+        const lista = document.getElementById('historialList');
+        lista.innerHTML = '';
+        if (historial.length === 0) {
+            lista.innerHTML = '<div style="text-align:center; color:#aaa; padding:10px;">El oráculo espera tu llamado...</div>';
+            return;
+        }
+        historial.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'history-item';
+            div.innerHTML = `<span>🔮 Número <strong>${item.numero}</strong> (${item.modo})</span><span style="color:#aaa; font-size:0.8em">${item.fecha}</span>`;
+            lista.appendChild(div);
+        });
+    }
+
+    function borrarHistorial() {
+        if(confirm("¿Seguro de limpiar tu historial místico?")) {
+            historial = [];
+            localStorage.removeItem('oraculoHistorial');
+            renderizarHistorial();
+            actualizarMapaCalor();
+            document.getElementById('shareArea').classList.remove('visible');
+        }
+    }
+
+    function verMapaCalor() {
+        const panel = document.getElementById('heatSection');
+        panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        if(panel.style.display === 'block') actualizarMapaCalor();
+    }
+
+    function actualizarMapaCalor() {
+        const grid = document.getElementById('heatGrid');
+        grid.innerHTML = '';
+        const frecuencias = {};
+        historial.forEach(item => { frecuencias[item.numero] = (frecuencias[item.numero] || 0) + 1; });
+
+        for (let i = 0; i < 100; i++) {
+            const numStr = i.toString().padStart(2, '0');
+            const cell = document.createElement('div');
+            cell.className = 'heat-cell';
+            cell.innerText = numStr;
+            if (frecuencias[numStr]) {
+                cell.style.background = frecuencias[numStr] === 1 ? '#6c5ce7' : '#fd79a8';
+                cell.style.color = '#fff';
+                cell.style.boxShadow = '0 0 8px currentColor';
+            }
+            grid.appendChild(cell);
+        }
+    }
+
+    function speak(numero) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const msg = new SpeechSynthesisUtterance(`Tu número de la suerte es el ${numero}`);
+            msg.lang = 'es-LA'; 
+            window.speechSynthesis.speak(msg);
+        }
+    }
+
+    function compartirTexto() {
+        if (!ultimoNumeroGanador) return;
+        const texto = `🔮 ¡El Oráculo Premium habló! Mi número de la suerte es el ✨ ${ultimoNumeroGanador} ✨ de la Tómbola.`;
+        if (navigator.share) navigator.share({ title: 'Tómbola Oro', text: texto }).catch(() => {});
+    }
+
+    function descargarImagenAndroid() {
+        if (!ultimoNumeroGanador) return;
+        const canvas = document.createElement('canvas');
+        canvas.width = 400; canvas.height = 400;
+        const ctx = canvas.getContext('2d');
+        const grad = ctx.createLinearGradient(0, 0, 400, 400);
+        grad.addColorStop(0, '#110d29'); grad.addColorStop(1, '#000000');
+        ctx.fillStyle = grad; ctx.fillRect(0, 0, 400, 400);
+        ctx.strokeStyle = '#ffeaa7'; ctx.lineWidth = 6; ctx.strokeRect(15, 15, 370, 370);
+        ctx.fillStyle = '#fd79a8'; ctx.font = 'bold 22px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('✨ ORÁCULO PREMIUM ✨', 200, 70);
+        ctx.fillStyle = '#ffeaa7'; ctx.font = 'italic 16px sans-serif';
+        ctx.fillText(`Turno ${modoActual.toUpperCase()}`, 200, 110);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'; ctx.fillRect(80, 150, 240, 120);
+        ctx.fillStyle = '#00ffcc'; ctx.font = 'bold 75px monospace';
+        ctx.fillText(ultimoNumeroGanador, 200, 235);
+        ctx.fillStyle = '#b2bec3'; ctx.font = '11px sans-serif';
+        ctx.fillText('Tómbola Suerte • Edición Diamante', 200, 350);
+
+        canvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.download = `Suerte_VIP_${ultimoNumeroGanador}.png`;
+            a.href = url; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 'image/png');
+    }
+
+    renderizarHistorial();
+    actualizarInterfazEnergia();
+</script>
+
+</body>
+</html>
